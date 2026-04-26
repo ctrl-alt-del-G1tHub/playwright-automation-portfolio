@@ -2,7 +2,7 @@
 
 A portfolio-quality test automation project targeting the public [Restful Booker Platform](https://automationintesting.online) demo app — a full B&B booking system built for testing practice.
 
-[![Playwright Tests](https://github.com/YOUR_USERNAME/restful-booker-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/YOUR_USERNAME/restful-booker-tests/actions/workflows/playwright.yml)
+[![Playwright Tests](https://github.com/ctrl-alt-del-G1tHub/playwright-automation-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/ctrl-alt-del-G1tHub/playwright-automation-portfolio/actions/workflows/playwright.yml)
 
 ---
 

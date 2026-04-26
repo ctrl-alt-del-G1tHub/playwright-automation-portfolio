@@ -1,8 +1,11 @@
 # Restful Booker — Playwright Test Suite
 
-A portfolio-quality test automation project targeting the public [Restful Booker Platform](https://automationintesting.online) demo app — a full B&B booking system built for testing practice.
+Built by a senior QA professional with 10 years of enterprise testing experience to demonstrate modern Playwright automation architecture. This suite reflects real-world practices including Page Object Model structure, custom fixture design, data-driven testing, API validation, and CI/CD integration — matching the same patterns used in production QA work across large-scale CRM systems and AI-native product builds.
 
 [![Playwright Tests](https://github.com/ctrl-alt-del-G1tHub/playwright-automation-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/ctrl-alt-del-G1tHub/playwright-automation-portfolio/actions/workflows/playwright.yml)
+![Tests](https://img.shields.io/badge/tests-160-blue)
+![Playwright](https://img.shields.io/badge/Playwright-1.44-45ba4b?logo=playwright&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178c6?logo=typescript&logoColor=white)
 
 ---
 

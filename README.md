@@ -9,6 +9,16 @@ Built by a senior QA professional with 10 years of enterprise testing experience
 
 ---
 
+## Documentation
+
+| Doc | What it contains |
+|-----|-----------------|
+| [Prompt Library](docs/prompt-library.md) | 7 reusable prompts for scenario generation, edge case discovery, coverage gap analysis, API contract testing, and more |
+| [AI-Assisted Worked Example](docs/ai-assisted/contact-form-worked-example.md) | Full before/after: requirement → AI output → audit decisions → final tests, using the contact form as the case study |
+| [Test Backlog](docs/test-backlog.md) | Deferred scenarios surfaced during AI analysis, with rationale and next steps |
+
+---
+
 ## What's covered
 
 | Layer | Scope |

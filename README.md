@@ -13,6 +13,8 @@ Built by a senior QA professional with 10 years of enterprise testing experience
 
 | Doc | What it contains |
 |-----|-----------------|
+| [Scenario Matrix](docs/scenario-matrix.md) | Requirements-to-test traceability across all 6 feature areas — 59 scenarios mapped with risk and automation status |
+| [Coverage Checklist](docs/coverage-checklist.md) | Feature-by-feature view of what's done, pending, manual-only, and explicitly out of scope |
 | [Prompt Library](docs/prompt-library.md) | 7 reusable prompts for scenario generation, edge case discovery, coverage gap analysis, API contract testing, and more |
 | [AI-Assisted Worked Example](docs/ai-assisted/contact-form-worked-example.md) | Full before/after: requirement → AI output → audit decisions → final tests, using the contact form as the case study |
 | [Test Backlog](docs/test-backlog.md) | Deferred scenarios surfaced during AI analysis, with rationale and next steps |

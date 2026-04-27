@@ -22,14 +22,17 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: '**/ui/**',
     },
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      testMatch: '**/ui/**',
     },
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
+      testMatch: '**/ui/**',
     },
     {
       name: 'mobile-chrome',

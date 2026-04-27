@@ -19,7 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        project: [chromium, firefox, api]
+        # API tests are excluded from CI: automationintesting.online blocks requests
+        # from cloud-provider IPs. Run `npx playwright test --project=api` locally.
+        project: [chromium, firefox]
 
     steps:
       - name: Checkout code
@@ -35,7 +37,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps ${{ matrix.project == 'api' && 'chromium' || matrix.project }}
+        run: npx playwright install --with-deps ${{ matrix.project }}
 
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.project }}

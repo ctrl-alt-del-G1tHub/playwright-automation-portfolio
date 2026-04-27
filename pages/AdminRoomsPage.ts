@@ -33,12 +33,13 @@ export class AdminRoomsPage extends BasePage {
     this.accessibleSelect = page.locator('#accessible');
     this.priceInput       = page.locator('#roomPrice');
     this.createRoomBtn    = page.locator('#createRoom');
-    this.roomRows         = page.locator('.roomrow');
+    this.roomRows         = page.locator('div.row').filter({ has: page.locator('.roomDelete') });
   }
 
   async goto() {
-    await this.page.goto('/#/admin/rooms');
+    await this.page.goto('/admin/rooms');
     await this.page.waitForLoadState('networkidle');
+    await this.page.locator('#roomName').waitFor({ state: 'visible', timeout: 15_000 });
   }
 
   async createRoom(data: RoomData) {
@@ -69,7 +70,7 @@ export class AdminRoomsPage extends BasePage {
   }
 
   async assertRoomExists(roomName: string) {
-    await expect(this.roomRows.filter({ hasText: roomName })).toBeVisible();
+    await expect(this.roomRows.filter({ hasText: roomName })).toBeVisible({ timeout: 10_000 });
   }
 
   async assertRoomNotExists(roomName: string) {

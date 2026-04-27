@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../../pages/HomePage';
+import { HomePage } from '../../../pages/HomePage';
 
 test.describe('Homepage', () => {
   let homePage: HomePage;
@@ -11,7 +11,7 @@ test.describe('Homepage', () => {
 
   test('has correct page title', async () => {
     const title = await homePage.getTitle();
-    expect(title).toContain('Restful Booker');
+    expect(title).toContain('Restful-booker-platform');
   });
 
   test('displays hotel name', async () => {
@@ -24,7 +24,7 @@ test.describe('Homepage', () => {
   });
 
   test('each room card has a book button', async ({ page }) => {
-    const bookButtons = page.locator('.openBooking');
+    const bookButtons = page.locator('.room-card .btn-primary');
     const count = await bookButtons.count();
     expect(count).toBeGreaterThanOrEqual(1);
     for (let i = 0; i < count; i++) {

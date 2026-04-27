@@ -16,7 +16,7 @@ export class AdminLoginPage extends BasePage {
   }
 
   async goto() {
-    await this.page.goto('/#/admin');
+    await this.page.goto('/admin');
     await this.page.waitForLoadState('networkidle');
   }
 

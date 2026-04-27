@@ -20,18 +20,33 @@ export const test = base.extend<{
     const loginPage = new AdminLoginPage(page);
     await loginPage.goto();
     await loginPage.loginAsAdmin();
-    await page.waitForURL('**/#/admin/rooms', { timeout: 10_000 });
+    await page.waitForURL('**/admin/rooms', { timeout: 10_000 });
+    await page.locator('div.row').filter({ has: page.locator('.roomDelete') }).first().waitFor({ state: 'visible', timeout: 15_000 });
     await use(new AdminRoomsPage(page));
   },
 
   /** Admin messages page — already authenticated */
-  adminMessages: async ({ page }, use) => {
+  adminMessages: async ({ page, browserName }, use) => {
     const loginPage = new AdminLoginPage(page);
     await loginPage.goto();
     await loginPage.loginAsAdmin();
-    await page.waitForURL('**/#/admin/rooms', { timeout: 10_000 });
-    await page.goto('/#/admin/messages');
-    await page.waitForLoadState('networkidle');
+    await page.waitForURL('**/admin/rooms', { timeout: 10_000 });
+
+    if (browserName === 'webkit') {
+      // WebKit loses auth state on direct SPA navigation; use nav link click instead
+      const toggler = page.locator('.navbar-toggler');
+      if (await toggler.isVisible()) {
+        await toggler.click();
+      }
+      const messagesLink = page.getByRole('link', { name: /Messages/ });
+      await messagesLink.waitFor({ state: 'visible', timeout: 10_000 });
+      await messagesLink.click();
+    } else {
+      // Chromium (desktop + mobile) handles direct SPA navigation fine
+      await page.goto('/admin/message');
+    }
+
+    await page.waitForURL('**/admin/message', { timeout: 10_000 });
     await use(new AdminMessagesPage(page));
   },
 

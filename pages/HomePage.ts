@@ -16,8 +16,8 @@ export class HomePage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.hotelName = page.locator('.hotel-logotext');
-    this.roomCards = page.locator('.hotel-room-info');
+    this.hotelName = page.locator('.navbar-brand');
+    this.roomCards = page.locator('.room-card');
 
     this.contactForm = {
       name:           page.locator('#name'),
@@ -25,8 +25,8 @@ export class HomePage extends BasePage {
       phone:          page.locator('#phone'),
       subject:        page.locator('#subject'),
       description:    page.locator('#description'),
-      submitBtn:      page.locator('#submitContact'),
-      successMessage: page.locator('.contact-us .alert-success'),
+      submitBtn:      page.getByRole('button', { name: 'Submit' }),
+      successMessage: page.getByRole('heading', { name: /Thanks for getting in touch/ }),
     };
   }
 

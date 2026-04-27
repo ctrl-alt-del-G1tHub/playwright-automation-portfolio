@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../../pages/HomePage';
-import { validContact, invalidContacts } from '../../test-data/contact';
+import { HomePage } from '../../../pages/HomePage';
+import { validContact, invalidContacts } from '../../../test-data/contact';
 
 test.describe('Contact Form', () => {
   let homePage: HomePage;
@@ -18,7 +18,7 @@ test.describe('Contact Form', () => {
 
   test('success message contains the sender name', async ({ page }) => {
     await homePage.submitContactForm(validContact);
-    const success = page.locator('.contact-us .alert-success, .contact-us h2');
+    const success = page.getByRole('heading', { name: /Thanks for getting in touch/ });
     await expect(success).toContainText(validContact.name, { timeout: 10_000 });
   });
 
@@ -33,7 +33,6 @@ test.describe('Contact Form', () => {
   test('form fields are pre-cleared after successful submission', async ({ page }) => {
     await homePage.submitContactForm(validContact);
     await homePage.assertContactSuccess();
-    // Clicking send again should show a fresh form
-    await page.locator('#submitContact').waitFor({ state: 'visible' });
+    await expect(homePage.contactForm.name).not.toBeVisible();
   });
 });

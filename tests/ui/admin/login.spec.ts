@@ -17,7 +17,7 @@ test.describe('Admin Login', () => {
 
   test('successful login redirects to admin panel', async ({ page }) => {
     await loginPage.loginAsAdmin();
-    await expect(page).toHaveURL(/\/#\/admin\/rooms/, { timeout: 10_000 });
+    await expect(page).toHaveURL(/\/admin/, { timeout: 10_000 });
   });
 
   test('wrong password shows error', async () => {

@@ -1,0 +1,38 @@
+# Flow: Login — Happy Path
+# App: Sauce Labs My Demo App (Android)
+# APK: https://github.com/saucelabs/my-demo-app-android/releases
+# Package: com.saucelabs.mydemoapp.android
+#
+# Covers: REQ-M01 — user can log in with valid credentials and reach the product catalog
+
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+# Navigate to the login screen via the menu
+- tapOn:
+    id: "menuIV"
+
+- tapOn:
+    text: "Log In"
+
+# Enter valid credentials
+- tapOn:
+    id: "nameET"
+- inputText: "bod@example.com"
+
+- tapOn:
+    id: "passwordET"
+- inputText: "10203040"
+
+- tapOn:
+    id: "loginBtn"
+
+# Assert: landed on the product catalog
+- assertVisible:
+    text: "Products"
+
+# Assert: no error banner present
+- assertNotVisible:
+    text: "Username and password do not match any user in this service"

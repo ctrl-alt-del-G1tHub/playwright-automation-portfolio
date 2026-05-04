@@ -1,0 +1,45 @@
+# Flow: Shopping Cart — Add Item and Verify Badge
+# App: Sauce Labs My Demo App (Android)
+# Package: com.saucelabs.mydemoapp.android
+#
+# Covers: REQ-M03 — adding a product increments the cart badge; cart screen lists the item
+
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+# Start from catalog
+- assertVisible:
+    text: "Products"
+
+# Open first product
+- tapOn:
+    text: "Sauce Labs Backpack"
+
+# Add to cart from detail screen
+- tapOn:
+    text: "Add To Cart"
+
+# Navigate back to catalog — cart badge should now show 1
+- pressKey: Back
+
+# Open cart via the cart icon in the toolbar
+- tapOn:
+    id: "cartIV"
+
+# Assert: cart screen loaded
+- assertVisible:
+    text: "Your Cart"
+
+# Assert: the added product appears in the cart
+- assertVisible:
+    text: "Sauce Labs Backpack"
+
+# Assert: quantity shows 1
+- assertVisible:
+    text: "1"
+
+# Assert: Proceed To Checkout button is present
+- assertVisible:
+    text: "Proceed To Checkout"

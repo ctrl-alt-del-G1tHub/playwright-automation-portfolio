@@ -1,0 +1,35 @@
+# Flow: Checkout — Requires Login (Error / Gate State)
+# App: Sauce Labs My Demo App (Android)
+# Package: com.saucelabs.mydemoapp.android
+#
+# Covers: REQ-M04 — attempting checkout without logging in prompts the user to log in first
+
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+# Add a product to cart as a guest (no login)
+- tapOn:
+    text: "Sauce Labs Backpack"
+
+- tapOn:
+    text: "Add To Cart"
+
+- pressKey: Back
+
+# Open cart
+- tapOn:
+    id: "cartIV"
+
+- assertVisible:
+    text: "Your Cart"
+
+# Attempt to proceed to checkout without being logged in
+- tapOn:
+    text: "Proceed To Checkout"
+
+# Assert: app blocks checkout and prompts for login
+# (the app shows a login prompt or navigates to the login screen)
+- assertVisible:
+    text: "Log In"

@@ -1,0 +1,40 @@
+# Flow: Product Catalog — Basic Navigation
+# App: Sauce Labs My Demo App (Android)
+# Package: com.saucelabs.mydemoapp.android
+#
+# Covers: REQ-M02 — catalog loads, user can tap a product and see its detail screen
+
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+# Catalog is the default screen on launch — assert it loaded
+- assertVisible:
+    text: "Products"
+
+# Assert at least one product card is rendered
+- assertVisible:
+    text: "Sauce Labs Backpack"
+
+# Tap the first product to open its detail view
+- tapOn:
+    text: "Sauce Labs Backpack"
+
+# Assert: detail screen shows product name and price
+- assertVisible:
+    text: "Sauce Labs Backpack"
+
+- assertVisible:
+    text: "$"
+
+# Assert: Add To Cart button is present on detail screen
+- assertVisible:
+    text: "Add To Cart"
+
+# Navigate back to catalog
+- pressKey: Back
+
+# Assert: catalog is visible again
+- assertVisible:
+    text: "Products"

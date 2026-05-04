@@ -1,0 +1,49 @@
+# Flow: Logout
+# App: Sauce Labs My Demo App (Android)
+# Package: com.saucelabs.mydemoapp.android
+#
+# Covers: REQ-M01 — logged-in user can log out; returns to guest state
+
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+# Log in first
+- tapOn:
+    id: "menuIV"
+
+- tapOn:
+    text: "Log In"
+
+- tapOn:
+    id: "nameET"
+- inputText: "bod@example.com"
+
+- tapOn:
+    id: "passwordET"
+- inputText: "10203040"
+
+- tapOn:
+    id: "loginBtn"
+
+- assertVisible:
+    text: "Products"
+
+# Now log out via the side menu
+- tapOn:
+    id: "menuIV"
+
+- tapOn:
+    text: "Log Out"
+
+# Assert: returned to a guest/unauthenticated state
+# The menu should now show "Log In" instead of "Log Out"
+- tapOn:
+    id: "menuIV"
+
+- assertVisible:
+    text: "Log In"
+
+- assertNotVisible:
+    text: "Log Out"
